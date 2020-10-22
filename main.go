@@ -37,7 +37,8 @@ func startCacheServer(addr string, addrs []string, group *mycache.Group) {
 	//注册节点选择器 PeerPicker
 	group.RegisterPeers(peers)
 	log.Println("myCache is running at", addr)
-	log.Fatal(http.ListenAndServe(addr[7:], peers))
+
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+addr[22:], peers))
 }
 
 //外部接口：用于用户交互，访问 http://ip:port/api?key=xx
@@ -67,12 +68,12 @@ func main() {
 	flag.Parse()
 
 	//用于用户访问的对外服务端口
-	apiAddr := "http://localhost:9999"
+	apiAddr := "http://0.0.0.0:9999"
 	//缓存服务的所有节点
 	addrMap := map[int]string{
-		8001: "http://localhost:8001",
-		8002: "http://localhost:8002",
-		8003: "http://localhost:8003",
+		8001: "http://10.234.113.126:8001",
+		8002: "http://10.234.113.126:8002",
+		8003: "http://10.234.113.126:8003",
 	}
 
 	var addrs []string

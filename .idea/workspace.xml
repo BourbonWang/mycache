@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0acb0fca-1744-4ba1-86d6-b21497c30e92" name="Default Changelist" comment="" />
+    <list default="true" id="0acb0fca-1744-4ba1-86d6-b21497c30e92" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +18,9 @@
     </option>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GoLibraries">
     <option name="urls">
       <list>
@@ -23,6 +29,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1hdFsYcHF77RTEWo4z0aA0P1RFN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,7 +44,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -45,7 +52,7 @@
       <recent name="$PROJECT_DIR$/lru" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Docker.Dockerfile-myCache">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="myCacheTest" />
       <working_directory value="$PROJECT_DIR$" />
@@ -77,6 +84,25 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="Dockerfile-myCache" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="mycache" />
+          <option name="buildCliOptions" value="" />
+          <option name="buildOnly" value="true" />
+          <option name="command" value="" />
+          <option name="containerName" value="Bourbon" />
+          <option name="entrypoint" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.Dockerfile-myCache" />
+      <item itemvalue="Go Build.go build main.go" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -101,13 +127,18 @@
     </environment>
   </component>
   <component name="WindowStateProjectService">
+    <state x="529" y="210" width="800" height="677" key="#Docker" timestamp="1603362338166">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="529" y="210" width="800" height="677" key="#Docker/0.0.1920.1040@0.0.1920.1040" timestamp="1603362338166" />
     <state x="2675" y="355" width="400" height="327" key="#Go_Modules" timestamp="1600426709105">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2675" y="355" width="400" height="327" key="#Go_Modules/1920.0.1920.1080/0.0.1920.1040@1920.0.1920.1080" timestamp="1600426709105" />
-    <state x="744" y="214" width="1084" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600433339505">
+    <state x="652" y="197" width="1084" height="746" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603362391062">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="652" y="197" width="1084" height="746" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603362391062" />
     <state x="744" y="214" width="1084" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.0.1920.1040@0.0.1920.1040" timestamp="1600433339505" />
     <state x="1022" y="332" width="634" height="414" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600951118808">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -117,9 +148,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2687" y="353" width="218" height="303" key="EnvironmentVariablesDialog/1920.0.1920.1080/0.0.1920.1040@1920.0.1920.1080" timestamp="1600427170034" />
-    <state x="1040" y="297" width="424" height="484" key="FileChooserDialogImpl" timestamp="1600433331582">
+    <state x="1040" y="297" width="424" height="484" key="FileChooserDialogImpl" timestamp="1603361997438">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="1040" y="297" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1603361997438" />
     <state x="1040" y="297" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1040@0.0.1920.1040" timestamp="1600433331582" />
     <state width="673" height="213" key="GridCell.Tab.0.bottom" timestamp="1600504349414">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -137,9 +169,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="673" height="213" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1040@0.0.1920.1040" timestamp="1600504349413" />
-    <state x="739" y="174" key="SettingsEditor" timestamp="1600952165450">
+    <state x="739" y="174" key="SettingsEditor" timestamp="1603368080717">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="739" y="174" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1603368080717" />
     <state x="739" y="174" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1040@0.0.1920.1040" timestamp="1600952165450" />
     <state x="2283" y="140" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1040@1920.0.1920.1080" timestamp="1600427214679" />
     <state x="869" y="49" width="638" height="942" key="find.popup" timestamp="1603354072532">
