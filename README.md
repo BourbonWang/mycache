@@ -17,23 +17,26 @@
 6. http服务器，使用protobuf通信
 ## 使用  
 ### 创建缓存group
-'''go
+```go
   group := mycache.NewGroup(groupName, maxSize, mycache.GetterFunc(
 		//缓存未命中时的数据获取函数,数据库等
 		func(key string) ([]byte, error) {
         //search from DB
 				return []byte(value), err
 		}))
-'''go		
+```
 ### 启动缓存服务器
 addr:  本机地址 如：aa.bb.c.ddd:port
 addrs: 所有节点地址列表
+```go
   peers := mycache.NewHTTPPool(addr)
 	peers.Set(addrs...)
 	group.RegisterPeers(peers)
-  http.ListenAndServe("0.0.0.0:"+port, peers)
+  http.ListenAndServe("0.0.0.0:"+port, peers)  
+```
 ### 启动客户端
 部署时，在其中某个节点调用
+```go
   http.Handle("/api", http.HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {
 			key := r.URL.Query().Get("key")
@@ -46,6 +49,7 @@ addrs: 所有节点地址列表
 			w.Write(view.ByteSlice())
 		}))    
     http.ListenAndServe(addr + clientPort, nil)
+```
 用户访问 ip:clientPort/api?key=xxx，客户端直接调用本地节点服务器。
 
 ## 部署与测试
