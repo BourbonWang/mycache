@@ -9,7 +9,7 @@
 + 可以分布式部署，也可以单机多端口部署
 
 ## 实现  
-本缓存学习groupcache(https://github.com/golang/groupcache), golang实现。  
+本缓存学习[groupcache](https://github.com/golang/groupcache), golang实现。  
 1. 实现LRU，加入锁以达到并发安全
 3. 一致性哈希选择节点，避免缓存雪崩
 4. 实现同时运行多个缓存实例，封装缓存填充接口
@@ -26,7 +26,7 @@
 		}))
 ```
 ### 启动缓存服务器
-addr:  本机地址 如：aa.bb.c.ddd:port
+addr:  本机地址 如：aa.bb.c.ddd:port  
 addrs: 所有节点地址列表
 ```go
   peers := mycache.NewHTTPPool(addr)
@@ -53,7 +53,42 @@ addrs: 所有节点地址列表
 用户访问 ip:clientPort/api?key=xxx，客户端直接调用本地节点服务器。
 
 ## 部署与测试
+具体见[main.go](https://github.com/BourbonWang/mycache/blob/master/main.go)
+```go
+func main() {
+	var port int  //缓存服务的端口号
+	var api bool  //是否将本设备作为用户访问节点
+	flag.IntVar(&port, "port", 8001, "myCache server port")
+	flag.BoolVar(&api, "api", false, "Start a api server?")
+	flag.Parse()
 
+	//用于用户访问的对外服务端口
+	apiAddr := "http://0.0.0.0:9999"
+	//缓存服务的所有节点
+	addrMap := map[int]string{
+		8001: "http://10.234.113.126:8001",
+		8002: "http://10.234.113.126:8002",
+		8003: "http://10.234.113.126:8003",
+	}
+
+	var addrs []string
+	for _, v := range addrMap {
+		addrs = append(addrs, v)
+	}
+
+	group := createGroup()
+	if api {		//如果在此设备上开启用户外部访问服务
+		go startAPIServer(apiAddr, group)
+	}
+	startCacheServer(addrMap[port], addrs, group)
+}
+```
+### docker部署
+```
+docker run -name  node1 -p 8001:8001 cache /server -port=8001
+docker run -name  node1 -p 8002:8002 cache /server -port=8002
+docker run -name  node1 -p 8003:8003 -p 9999:9999 cache /server -port=8003 -api=1
+```
 ## 后续完善  
 + 客户端节点故障后，自动选举新节点
 + 动态增加、减少节点
