@@ -21,8 +21,8 @@
   group := mycache.NewGroup(groupName, maxSize, mycache.GetterFunc(
 		//缓存未命中时的数据获取函数,数据库等
 		func(key string) ([]byte, error) {
-        //search from DB
-				return []byte(value), err
+        	//search from DB
+			return []byte(value), err
 		}))
 ```
 ### 启动缓存服务器
@@ -30,8 +30,8 @@ addr:  本机地址 如：aa.bb.c.ddd:port
 addrs: 所有节点地址列表
 ```go
   peers := mycache.NewHTTPPool(addr)
-	peers.Set(addrs...)
-	group.RegisterPeers(peers)
+  peers.Set(addrs...)
+  group.RegisterPeers(peers)
   http.ListenAndServe("0.0.0.0:"+port, peers)  
 ```
 ### 启动客户端
