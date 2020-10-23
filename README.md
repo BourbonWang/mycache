@@ -17,12 +17,14 @@
 6. http服务器，使用protobuf通信
 ## 使用  
 ### 创建缓存group
+'''go
   group := mycache.NewGroup(groupName, maxSize, mycache.GetterFunc(
 		//缓存未命中时的数据获取函数,数据库等
 		func(key string) ([]byte, error) {
         //search from DB
 				return []byte(value), err
 		}))
+'''go		
 ### 启动缓存服务器
 addr:  本机地址 如：aa.bb.c.ddd:port
 addrs: 所有节点地址列表
