@@ -94,9 +94,9 @@ func main() {
 ```
 ### docker部署
 ```
-docker run -name  node1 -p 8001:8001 cache /server -port=8001
-docker run -name  node1 -p 8002:8002 cache /server -port=8002
-docker run -name  node1 -p 8003:8003 -p 9999:9999 cache /server -port=8003 -api=1
+docker run --name  node1 -p 8001:8001 mycache /server -port=8001
+docker run --name  node1 -p 8002:8002 mycache /server -port=8002
+docker run --name  node1 -p 8003:8003 -p 9999:9999 mycache /server -port=8003 -api=1
 ```
 ### 测试
 ```
