@@ -6,6 +6,7 @@ import (
 	"log"
 	"mycache"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -38,7 +39,7 @@ func startCacheServer(addr string, addrs []string, group *mycache.Group) {
 	group.RegisterPeers(peers)
 	log.Println("myCache is running at", addr)
 
-	log.Fatal(http.ListenAndServe("0.0.0.0:"+addr[22:], peers))
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+strings.Split(addr, ":")[2], peers))
 }
 
 //外部接口：用于用户交互，访问 http://ip:port/api?key=xx
@@ -61,8 +62,8 @@ func startAPIServer(apiAddr string, group *mycache.Group) {
 }
 
 func main() {
-	var port int  //缓存服务的端口号
-	var api bool  //是否将本设备作为用户访问节点
+	var port int //缓存服务的端口号
+	var api bool //是否将本设备作为用户访问节点
 	flag.IntVar(&port, "port", 8001, "myCache server port")
 	flag.BoolVar(&api, "api", false, "Start a api server?")
 	flag.Parse()
@@ -71,9 +72,9 @@ func main() {
 	apiAddr := "http://0.0.0.0:9999"
 	//缓存服务的所有节点
 	addrMap := map[int]string{
-		8001: "http://10.234.113.126:8001",
-		8002: "http://10.234.113.126:8002",
-		8003: "http://10.234.113.126:8003",
+		8001: "http://x.x.x.x:8001",
+		8002: "http://x.x.x.x:8002",
+		8003: "http://x.x.x.x:8003",
 	}
 
 	var addrs []string
@@ -82,7 +83,7 @@ func main() {
 	}
 
 	group := createGroup()
-	if api {		//如果在此设备上开启用户外部访问服务
+	if api { //如果在此设备上开启用户外部访问服务
 		go startAPIServer(apiAddr, group)
 	}
 	startCacheServer(addrMap[port], addrs, group)
